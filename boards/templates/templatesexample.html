@@ -1,3 +1,4 @@
+{% extends "base.html" %} {% block content%}
 <!DOCTYPE html> 
 <html lang="es"> 
 <head> 
@@ -9,23 +10,26 @@
 <body> 
     <p><b>Libros con una valoración mayor a 1500 puntos</b></p>      
 
-    {% for i in items%}
-        {%for j in i%}
-            {{j}} 
-        {% endfor%}
-        <br>
-    {% endfor%}
+{% for i in items %}
+
+    {% if i.valoracion > 1500 %}
+        Titulo: {{i.titulo}}, 
+        Autor: {{i.autor}},
+        Valoración: {{i.valoracion}}     <br>
+    {% endif %}    
+
+{% endfor %}
 
 
-    <p><b>Listado de todos los libros:</b></p>      
+<br>    <p><b>Listado de todos los libros:</b></p>      
 
-    {% for i in itemsTodos%}
-        {%for j in i%}
-            {{j}} 
-        {% endfor%}
-        <br>
-    {% endfor%}
+{% for i in items %}
+    Titulo: {{i.titulo}},
+    Autor: {{i.autor}} <br>
+{% endfor %}
             
         
 </body> 
 </html>
+
+{% endblock content%}
